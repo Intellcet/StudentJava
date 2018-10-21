@@ -1,15 +1,17 @@
 package com.stud.student.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
 @Data
-@RequiredArgsConstructor
+@Entity
 @Table(name="student")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "group_id"})
 public class Student {
 
     @Id
@@ -17,10 +19,13 @@ public class Student {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "first_name")
-    private String firstname;
+    @JoinColumn(name = "groupId")
+    private Long groupId;
 
-    @Column(name = "last_name")
-    private String lastname;
+    @Column(name = "firstName")
+    private String firstName;
+
+    @Column(name = "lastName")
+    private String lastName;
 
 }
