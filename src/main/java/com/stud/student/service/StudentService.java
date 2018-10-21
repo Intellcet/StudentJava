@@ -5,6 +5,8 @@ import com.stud.student.repos.StudentRepos;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class StudentService {
@@ -14,5 +16,6 @@ public class StudentService {
     public Student getOne(Long id) {
         return studentRepos.getOne(id);
     }
+    public List<Student> getAll() { return studentRepos.findAll(); }
 
 }

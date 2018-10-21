@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class TestController {
@@ -22,10 +24,14 @@ public class TestController {
         return studentService.getOne(id);
     }
 
+    @RequestMapping(value = "/getAll/Students", method = RequestMethod.GET)
+    private List<Student> getAllStudents() { return studentService.getAll(); }
+
     @RequestMapping(value = "/getGroup/{id}", method = RequestMethod.GET)
-    private Group getGroup(@PathVariable Long id) {
-        return groupService.getGroup(id);
-    }
+    private Group getGroup(@PathVariable Long id) { return groupService.getGroup(id); }
+
+    @RequestMapping(value = "/getAll/Groups", method = RequestMethod.GET)
+    private List<Group> getAllGroups() { return groupService.getAll(); }
 }
 
 

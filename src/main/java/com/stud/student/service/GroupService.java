@@ -5,6 +5,8 @@ import com.stud.student.repos.GroupRepos;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class GroupService {
@@ -13,6 +15,10 @@ public class GroupService {
 
     public Group getGroup(Long id) {
         return groupRepos.getOne(id);
+    }
+
+    public List<Group> getAll() {
+        return groupRepos.findAll();
     }
 
 }
