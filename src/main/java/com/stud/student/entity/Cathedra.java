@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,9 +21,9 @@ public class Cathedra {
     private String name;
 
     @OneToMany(mappedBy = "cathedraId")
-    private Set<Professor> professors;
+    private List<Professor> professors;
 
     @OneToMany(mappedBy = "cathedraId")
-    private Set<Subject> subjects;
+    private List<Subject> subjects;
 
 }

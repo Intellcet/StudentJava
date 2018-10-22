@@ -6,7 +6,7 @@ INSERT INTO subject (id, subject_name, cathedra_id) VALUES (3, 'Мат. Ан.', 
 INSERT INTO subject (id, subject_name, cathedra_id) VALUES (4, 'Функ. Ан.', SELECT id FROM cathedra WHERE cathedra_name = 'МиИ');
 INSERT INTO subject (id, subject_name, cathedra_id) VALUES (5, 'Диф. Ур.', SELECT id FROM cathedra WHERE cathedra_name = 'МиИ');
 INSERT INTO professor (id, professor_name, cathedra_id) VALUES (1, 'Личинус', SELECT id FROM cathedra WHERE cathedra_name = 'ВММКС');
-INSERT INTO professor (id, professor_name, cathedra_id) VALUES (2, 'ГрадобАева', SELECT id FROM cathedra WHERE cathedra_name = 'ВММКС');
+INSERT INTO professor (id, professor_name, cathedra_id) VALUES (2, 'Градобоева', SELECT id FROM cathedra WHERE cathedra_name = 'ВММКС');
 INSERT INTO professor (id, professor_name, cathedra_id) VALUES (3, 'Родионов В.И.', SELECT id FROM cathedra WHERE cathedra_name = 'МиИ');
 INSERT INTO professor (id, professor_name, cathedra_id) VALUES (4, 'Родионова А.Г.', SELECT id FROM cathedra WHERE cathedra_name = 'МиИ');
 INSERT INTO group_ (id, group_number) VALUES (1, 3631);
@@ -18,8 +18,8 @@ INSERT INTO student (id, first_name, last_name, group_id) VALUES(4, 'Роман'
 INSERT INTO student (id, first_name, last_name, group_id) VALUES(5, 'Владимир', 'Петрухин', SELECT id FROM group_ WHERE group_number = 3631);
 INSERT INTO student (id, first_name, last_name, group_id) VALUES(6, 'Златопуст', 'Локанс', SELECT id FROM group_ WHERE group_number = 3621);
 INSERT INTO student (id, first_name, last_name, group_id) VALUES(7, 'Констанция', 'Сальвиолли', SELECT id FROM group_ WHERE group_number = 3631);
-INSERT INTO subject_group (subject_id, group_id) VALUES (SELECT id FROM subject WHERE subject_name = 'МСиС',             SELECT id FROM group_ WHERE group_number = 3621);
-INSERT INTO subject_group (subject_id, group_id) VALUES (SELECT id FROM subject WHERE subject_name = 'Схемотехника ЭВМ', SELECT id FROM group_ WHERE group_number = 3631);
-INSERT INTO subject_group (subject_id, group_id) VALUES (SELECT id FROM subject WHERE subject_name = 'Мат. Ан.',         SELECT id FROM group_ WHERE group_number = 3621);
-INSERT INTO subject_group (subject_id, group_id) VALUES (SELECT id FROM subject WHERE subject_name = 'Функ. Ан.',        SELECT id FROM group_ WHERE group_number = 3621);
-INSERT INTO subject_group (subject_id, group_id) VALUES (SELECT id FROM subject WHERE subject_name = 'Диф. Ур.',         SELECT id FROM group_ WHERE group_number = 3621);
+INSERT INTO group__subjects (groups_id, subjects_id) VALUES (SELECT id FROM group_ WHERE group_number = 3621, SELECT id FROM subject WHERE subject_name = 'МСиС'            );
+INSERT INTO group__subjects (groups_id, subjects_id) VALUES (SELECT id FROM group_ WHERE group_number = 3631, SELECT id FROM subject WHERE subject_name = 'Схемотехника ЭВМ');
+INSERT INTO group__subjects (groups_id, subjects_id) VALUES (SELECT id FROM group_ WHERE group_number = 3621, SELECT id FROM subject WHERE subject_name = 'Мат. Ан.'        );
+INSERT INTO group__subjects (groups_id, subjects_id) VALUES (SELECT id FROM group_ WHERE group_number = 3621, SELECT id FROM subject WHERE subject_name = 'Функ. Ан.'       );
+INSERT INTO group__subjects (groups_id, subjects_id) VALUES (SELECT id FROM group_ WHERE group_number = 3621, SELECT id FROM subject WHERE subject_name = 'Диф. Ур.'        );

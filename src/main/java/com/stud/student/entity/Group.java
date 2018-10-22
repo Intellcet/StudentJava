@@ -2,11 +2,11 @@ package com.stud.student.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @Entity
@@ -23,12 +23,9 @@ public class Group {
     private Long groupNumber;
 
     @OneToMany(mappedBy = "groupId")
-    private Set<Student> students;
+    private List<Student> students;
 
     @ManyToMany
-    @JoinTable(name = "subject_group",
-            joinColumns = @JoinColumn(name = "groupId"),
-            inverseJoinColumns = @JoinColumn(name = "subjectId"))
-    private Set<Subject> subjects;
-
+    @JsonManagedReference
+    private List<Subject> subjects;
 }
