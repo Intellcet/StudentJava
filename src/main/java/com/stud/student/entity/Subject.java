@@ -12,7 +12,7 @@ import java.util.Set;
 @Entity
 @Data
 @Table(name = "subject")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "id", "cathedraId"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "id", "professorId", "cathedraId"})
 public class Subject {
 
     @Id
@@ -26,8 +26,9 @@ public class Subject {
     @JoinColumn(name = "cathedraId")
     private Long cathedraId;
 
-    @ManyToMany(mappedBy = "subjects")
-    @JsonBackReference
-    private List<Group> groups;
+    @OneToMany(mappedBy = "subjectId")
+    //@JsonBackReference
+    @JsonManagedReference
+    private List<Group_Subject> groups;
 
 }

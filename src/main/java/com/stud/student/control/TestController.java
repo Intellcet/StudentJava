@@ -3,6 +3,7 @@ package com.stud.student.control;
 import com.stud.student.entity.*;
 import com.stud.student.service.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,14 +12,22 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
 public class TestController {
 
-    private final StudentService studentService;
-    private final GroupService groupService;
-    private final CathedraService cathedraService;
-    private final ProfessorService professorService;
-    private final SubjectService subjectService;
+    private StudentService studentService;
+    private GroupService groupService;
+    private CathedraService cathedraService;
+    private ProfessorService professorService;
+    private SubjectService subjectService;
+
+    @Autowired
+    public TestController(StudentService studentService, GroupService groupService, CathedraService cathedraService, ProfessorService professorService, SubjectService subjectService) {
+        this.studentService = studentService;
+        this.groupService = groupService;
+        this.cathedraService = cathedraService;
+        this.professorService = professorService;
+        this.subjectService = subjectService;
+    }
 
     @RequestMapping(value = "/getOne/{id}", method = RequestMethod.GET)
     private Student getOne(@PathVariable Long id) {

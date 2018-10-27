@@ -25,7 +25,8 @@ public class Group {
     @OneToMany(mappedBy = "groupId")
     private List<Student> students;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "groupId")
     @JsonManagedReference
-    private List<Subject> subjects;
+    private List<Group_Subject> subjects;
+
 }
